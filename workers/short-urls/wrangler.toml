@@ -1,0 +1,9 @@
+name = 'short-urls'
+main = 'dist/worker.js'
+# This worker uses the custom domains feature instead of routes
+# routes = [{ pattern = '', zone_name = '' }]
+compatibility_date = '2022-06-07'
+workers_dev = true
+
+[build]
+command = 'npm run build'
