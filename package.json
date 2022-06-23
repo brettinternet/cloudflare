@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "start:short-urls": "wrangler --config ./workers/short-urls/wrangler.toml dev --local",
+    "start:dereferrer": "wrangler --config ./workers/dereferrer/wrangler.toml dev --local",
     "build": "run-p build:*",
     "build:short-urls": "cross-env WORKER_DIR=short-urls webpack",
+    "build:dereferrer": "cross-env WORKER_DIR=dereferrer webpack",
     "format": "prettier --write  '*.{json,js}' 'workers/**/*.{js,ts}' '.github/**/*.yml'",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint --max-warnings=0 workers",

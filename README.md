@@ -6,6 +6,7 @@
 ## Workers
 
 - [short-urls](./short-urls): redirects for different places around the web from my own short URLs
+- [dereferrer](./dereferrer): redirects URLs while removing the referrer
 
 ### Setup
 
