@@ -5,12 +5,12 @@
 
 ## Workers
 
-[tools](./tools) combines all of the following workers:
+[tools](./workers/tools) combines all of the following workers:
 
-- [short-urls](./short-urls): redirects for different places around the web from my own short URLs
-- [dereferrer](./dereferrer): redirects URLs while removing the referrer
-- [proxy](./proxy): a forward proxy that redirects requests from the Cloudflare worker
-- [request-details](./request-details): provide some details about the requesting client
+- [short-urls](./workers/short-urls): redirects for different places around the web from my own short URLs
+- [dereferrer](./workers/dereferrer): redirects URLs while removing the referrer
+- [proxy](./workers/proxy): a forward proxy that redirects requests from the Cloudflare worker
+- [request-details](./workers/request-details): provide some details about the requesting client
 
 ### Setup
 
