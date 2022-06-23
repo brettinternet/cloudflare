@@ -1,5 +1,5 @@
 # combined workers for a single worker under one route/domain
-name = "combined-tools"
+name = "tools"
 main = "dist/worker.js"
 compatibility_date = "2022-06-07"
 # This worker uses the custom domains feature instead of routes
@@ -10,4 +10,4 @@ kv_namespaces = [
 ]
 
 [build]
-command = "npm run build:combined"
+command = "npm run build:tools"

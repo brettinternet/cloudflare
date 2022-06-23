@@ -5,6 +5,8 @@
 
 ## Workers
 
+[tools](./tools) combines all of the following workers:
+
 - [short-urls](./short-urls): redirects for different places around the web from my own short URLs
 - [dereferrer](./dereferrer): redirects URLs while removing the referrer
 - [proxy](./proxy): a forward proxy that redirects requests from the Cloudflare worker

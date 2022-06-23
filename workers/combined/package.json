@@ -1,9 +1,0 @@
-{
-  "name": "dereferrer",
-  "private": true,
-  "scripts": {
-    "start": "npm --prefix ../../ run start:combined",
-    "build": "npm --prefix ../../ run build:combined",
-    "build:combined": "npm run build"
-  }
-}

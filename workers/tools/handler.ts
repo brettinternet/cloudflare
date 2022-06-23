@@ -11,13 +11,21 @@ export const handleRequest = async (request: Request): Promise<Response> => {
   const { pathname } = url
 
   // If a specific query param or pathname is included
-  if (pathname === '/request') {
-    return handleDetailsRequest(request)
-  }
 
   const proxyUrl = url.searchParams.get('proxy')
   if (proxyUrl) {
     return handleProxyRequest(request)
+  }
+
+  if (pathname === '/ip') {
+    return new Response(request.headers.get('CF-Connecting-IP'), {
+      headers: { 'content-type': 'text/plain' },
+      status: 200,
+    })
+  }
+
+  if (pathname === '/request') {
+    return handleDetailsRequest(request)
   }
 
   // If the pathname matches one of the redirect keys then it's a short URL
