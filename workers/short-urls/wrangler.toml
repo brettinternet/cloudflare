@@ -1,9 +1,12 @@
-name = 'short-urls'
-main = 'dist/worker.js'
+name = "short-urls"
+main = "dist/worker.js"
 # This worker uses the custom domains feature instead of routes
-# routes = [{ pattern = '', zone_name = '' }]
-compatibility_date = '2022-06-07'
+# routes = [{ pattern = "", zone_name = "" }]
+compatibility_date = "2022-06-07"
 workers_dev = true
+kv_namespaces = [
+  { binding = "REDIRECTS", id = "d7b68815d9824b2e98c15a4b3ed93dc6", preview_id = "6416e1b097f74fd0a134092405e11f04" }
+]
 
 [build]
-command = 'npm run build'
+command = "npm run build"

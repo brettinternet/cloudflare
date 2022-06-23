@@ -12,6 +12,9 @@ const config = {
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   collectCoverageFrom: ['<rootDir>/workers/**/*.{ts,js}'],
   testEnvironment: 'miniflare',
+  testEnvironmentOptions: {
+    kvNamespaces: ['REDIRECTS'],
+  },
 }
 
 module.exports = config

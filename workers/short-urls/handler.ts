@@ -1,21 +1,15 @@
-export const statusCode = 301
-export const rootRedirectUrl = 'https://brettinternet.com'
+export const statusCode = 302
+export const fallbackRootRedirectUrl = 'https://brettinternet.com'
 
 /**
- * Use pathname on short url as key
- * for value point to URL for redirection
+ * @source https://stackoverflow.com/a/43467144
  */
-export const urls = {
-  twitter: 'https://twitter.com/brettinternet',
-  bookmarks: 'https://bookmarks.brettgardiner.net/u:brett',
-} as const
-
-const isDefinedPath = (pathname: string): pathname is keyof typeof urls =>
-  pathname in urls
-
-const getRedirectUrl = (pathname: string): string | undefined => {
-  if (isDefinedPath(pathname)) {
-    return urls[pathname]
+const isValidHttpUrl = (value: string) => {
+  try {
+    const url = new URL(value)
+    return url.protocol === 'http:' || url.protocol === 'https:'
+  } catch (_err) {
+    return false
   }
 }
 
@@ -29,8 +23,8 @@ export const handleRequest = async (request: Request): Promise<Response> => {
   const identifier = pathname.replace(/^\//, '')
 
   if (identifier) {
-    const redirectUrl = getRedirectUrl(identifier)
-    if (redirectUrl) {
+    const redirectUrl = await REDIRECTS.get(identifier)
+    if (redirectUrl && isValidHttpUrl(redirectUrl)) {
       return Response.redirect(redirectUrl, statusCode)
     }
 
@@ -40,5 +34,7 @@ export const handleRequest = async (request: Request): Promise<Response> => {
     })
   }
 
+  const rootRedirectUrl =
+    (await REDIRECTS.get('root')) || fallbackRootRedirectUrl
   return Response.redirect(rootRedirectUrl, statusCode)
 }
