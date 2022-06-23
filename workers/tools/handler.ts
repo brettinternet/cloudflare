@@ -18,10 +18,15 @@ export const handleRequest = async (request: Request): Promise<Response> => {
   }
 
   if (pathname === '/ip') {
-    return new Response(request.headers.get('CF-Connecting-IP'), {
-      headers: { 'content-type': 'text/plain' },
-      status: 200,
-    })
+    // new line at end for curl
+    return new Response(
+      `${request.headers.get('CF-Connecting-IP') || ''}
+`,
+      {
+        headers: { 'content-type': 'text/plain' },
+        status: 200,
+      }
+    )
   }
 
   if (pathname === '/request') {

@@ -24,12 +24,13 @@ Timezone: ${u(timezone)}
 Location:
 ${u(city)}, ${u(region)} ${n(postalCode)}
 ${u(country)}, ${u(continent)}
-${u(latitude)}, ${u(longitude)}`
+${u(latitude)}, ${u(longitude)}
+`
   } else if (ip) {
-    return ip
+    return ip || '' + '\n'
   }
 
-  return 'No details found'
+  return 'No details found\n'
 }
 
 /**
