@@ -1,0 +1,8 @@
+{
+  "name": "proxy",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix ../../ run start:proxy",
+    "build": "npm --prefix ../../ run build:proxy"
+  }
+}

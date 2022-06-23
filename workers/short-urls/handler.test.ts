@@ -1,21 +1,21 @@
 import { handleRequest, statusCode, fallbackRootRedirectUrl } from './handler'
+import { appendTrailingSlash } from '../shared/url'
 
 const testOrigin = 'http://localhost'
-const trailingSlash = (url: string) => url + '/'
 
-describe('handle', () => {
+describe('handleRequest', () => {
   beforeAll(async () => {
-    await REDIRECTS.put('twitter', 'https://twitter.com')
+    await REDIRECTS.put('example', 'https://example.com')
     await REDIRECTS.put('invalid', 'asdf')
   })
 
   test('valid short URLs are redirected', async () => {
     const response = await handleRequest(
-      new Request(`${testOrigin}/twitter`, { method: 'GET' })
+      new Request(`${testOrigin}/example`, { method: 'GET' })
     )
     expect(response.status).toBe(statusCode)
     expect(response.headers.get('location')).toBe(
-      trailingSlash('https://twitter.com')
+      appendTrailingSlash('https://example.com')
     )
   })
 
@@ -41,7 +41,7 @@ describe('handle', () => {
     )
     expect(response.status).toBe(statusCode)
     expect(response.headers.get('location')).toBe(
-      trailingSlash(fallbackRootRedirectUrl)
+      appendTrailingSlash(fallbackRootRedirectUrl)
     )
   })
 
@@ -53,6 +53,6 @@ describe('handle', () => {
       new Request(`${testOrigin}`, { method: 'GET' })
     )
     expect(response.status).toBe(statusCode)
-    expect(response.headers.get('location')).toBe(trailingSlash(rootUrl))
+    expect(response.headers.get('location')).toBe(appendTrailingSlash(rootUrl))
   })
 })

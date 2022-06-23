@@ -1,7 +1,7 @@
-name = "dereferrer"
+name = "proxy"
 main = "dist/worker.js"
 compatibility_date = "2022-06-07"
 workers_dev = true
 
 [build]
-command = "npm run build:dereferrer"
+command = "npm run build:proxy"

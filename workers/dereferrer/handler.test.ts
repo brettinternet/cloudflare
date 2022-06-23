@@ -1,12 +1,12 @@
 import { handleRequest } from './handler'
+import { testOrigin } from '../shared/url'
 
-const testOrigin = 'http://localhost'
 const dereferredUrl = 'https://example.com'
 
-const getMetaRefreshUrl = (url: string) =>
+export const getMetaRefreshUrl = (url: string) =>
   `<meta http-equiv="refresh" content="0;URL=${url}" />`
 
-describe('handle', () => {
+describe('handleRequest', () => {
   test('includes a response with a meta-refresh URL redirect', async () => {
     const response = await handleRequest(
       new Request(`${testOrigin}/?${dereferredUrl}`, { method: 'GET' })
