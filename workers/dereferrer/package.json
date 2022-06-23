@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "npm --prefix ../../ run start:dereferrer",
-    "build": "npm --prefix ../../ run build:dereferrer"
+    "build": "npm --prefix ../../ run build:dereferrer",
+    "build:dereferrer": "npm run build"
   }
 }

@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "npm --prefix ../../ run start:request-details",
-    "build": "npm --prefix ../../ run build:request-details"
+    "build": "npm --prefix ../../ run build:request-details",
+    "build:request-details": "npm run build"
   }
 }

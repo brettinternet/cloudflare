@@ -11,7 +11,7 @@ export const handleRequest = async (request: Request): Promise<Response> => {
   const { pathname } = url
 
   // If a specific query param or pathname is included
-  if (pathname === 'request') {
+  if (pathname === '/request') {
     return handleDetailsRequest(request)
   }
 
